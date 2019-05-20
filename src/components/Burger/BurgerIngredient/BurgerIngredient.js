@@ -9,7 +9,7 @@ class BurgerIngredient extends Component  {
 
         let ingredient = null;
         //depending on the ingredient, give the div appropriate className
-        switch (props.type) {
+        switch (this.props.type) {
             case ('bread-bottom'):
               ingredient = <div className = {classes.breadBottom}></div>
               break;
@@ -41,6 +41,10 @@ class BurgerIngredient extends Component  {
         return ingredient;
     }
 
+  }
+  //add prop-types property to the class with a lower case p and setting it equal to a JavaScript object
+  BurgerIngredient.propTypes = {
+      type: PropTypes.string.isRequired
   }
 
 
