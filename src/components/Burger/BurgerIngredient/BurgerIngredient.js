@@ -11,11 +11,11 @@ class BurgerIngredient extends Component  {
         //depending on the ingredient, give the div appropriate className
         switch (this.props.type) {
             case ('bread-bottom'):
-              ingredient = <div className = {classes.breadBottom}></div>
+              ingredient = <div className = {classes.BreadBottom}></div>
               break;
             case ('bread-top'):
               ingredient = (
-                <div className = {breadTop}>
+                <div className = {classes.BreadTop}>
                   <div className = {classes.Seeds1}></div>
                   <div className = {classes.Seeds2}></div>
                 </div>
