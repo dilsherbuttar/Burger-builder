@@ -23,8 +23,6 @@ const burger = (props) => {
             <BurgerIngredient type = "bread-top"/>
             {transformedIngredients}
             <BurgerIngredient type = "bread-bottom"/>  
-            <br />
-            <p>Total Price: ${props.totalPrice}</p>
         </div>
     )
 }
