@@ -12,13 +12,17 @@ class Layout extends React.Component {
         this.setState({showSideDrawer: false})
     }
 
+    sideBarOpenHandler = () => {
+        this.setState({showSideDrawer: true});
+    }
+
     render(){
         return(
 
             <Aux>
-                <Toolbar />
+                <Toolbar clicked = {this.sideBarOpenHandler}/>
                 <Sidedrawer
-                 
+
                 open = {this.state.showSideDrawer}
                 closed = {this.sideBarClosedHandler}/>
                 <main className = {classes.Content}>
