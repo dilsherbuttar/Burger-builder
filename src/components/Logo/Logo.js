@@ -4,7 +4,9 @@ import classes from './Logo.css'
 
 function logo(props) {
     return (
-        <div className = {classes.Logo}>
+        <div 
+        style = {{height:props.height}}
+        className = {classes.Logo}>
             <img src = {burgerLogo} alt = "My Burger"></img>
         </div>
     )
