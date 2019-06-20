@@ -6,7 +6,7 @@ import Sidedrawer from '../Navigation/SideDrawer/SideDrawer';
 
 class Layout extends React.Component {
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     }
     sideBarClosedHandler = () => {
         this.setState({showSideDrawer: false})
