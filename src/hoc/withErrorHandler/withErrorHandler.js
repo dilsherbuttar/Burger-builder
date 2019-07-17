@@ -9,6 +9,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null
         }
         componentDidMount() {
+            //to remove the interceptors we need to make a reference of the interceptors in the class
             this.requestInterceptor = axios.interceptors.request.use( req => {
                 this.setState({
                     error: null
@@ -22,8 +23,9 @@ const withErrorHandler = (WrappedComponent, axios) => {
             })
         }
 
+        //The idea is to wrap the withErrorHandler HOC around multiple components. This might lead to memory leak so we need to eject the interceptors when the component is dismounted
         componentWillUnmount() {
-            axios.interceptors.request.eject(this.requestInterceptor);
+            axios.interceptors.request.eject(this.requestInterceptor);//here we eject the reference we made in the class e.g this.requestInterceptor
             axios.interceptors.response.eject(this.responseInterceptor);
         }
 
@@ -32,7 +34,6 @@ const withErrorHandler = (WrappedComponent, axios) => {
                 error: null
             })
         }
-
         render() {
             return (
                 <Aux>
