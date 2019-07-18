@@ -29,7 +29,6 @@ class Checkout extends Component {
             ingredients: ingredients,
             price: price
         })
-        console.log(this.state)
     }
     checkoutCancelledHandler = () => {
         this.props.history.goBack()
