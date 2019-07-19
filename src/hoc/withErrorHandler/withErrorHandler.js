@@ -8,7 +8,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         state = {
             error: null
         }
-        componentDidMount() {
+        componentWillMount() {
             //to remove the interceptors we need to make a reference of the interceptors in the class
             this.requestInterceptor = axios.interceptors.request.use( req => {
                 this.setState({

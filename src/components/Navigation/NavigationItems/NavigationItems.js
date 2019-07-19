@@ -7,7 +7,6 @@ function navigationItems() {
         <ul className = {classes.NavigationItems}>
            <NavigationItem link = "/" >Burger Builder</NavigationItem>
            <NavigationItem link = "/orders">Orders</NavigationItem>
-           <NavigationItem></NavigationItem>
         </ul>
     )
 }
