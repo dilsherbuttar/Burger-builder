@@ -9,55 +9,54 @@ class ContactData extends Component {
   state = {
     orderForm: {
       name: {
-        elementType: 'input',
+        elementType: "input",
         elementConfig: {
-          type: 'text',
-          placeholder: 'Your Name'
+          type: "text",
+          placeholder: "Your Name"
         },
-        value: ''
+        value: ""
       },
       street: {
-        elementType: 'input',
+        elementType: "input",
         elementConfig: {
-          type: 'text',
-          placeholder: 'Street'
+          type: "text",
+          placeholder: "Street"
         },
-        value: ''
+        value: ""
       },
       zipCode: {
-        elementType: 'input',
+        elementType: "input",
         elementConfig: {
-          type: 'text',
-          placeholder: 'Zip Code'
+          type: "text",
+          placeholder: "Zip Code"
         },
-        value: ''
+        value: ""
       },
       country: {
-        elementType: 'input',
+        elementType: "input",
         elementConfig: {
-          type: 'text',
-          placeholder: 'Country'
+          type: "text",
+          placeholder: "Country"
         },
-        value: ''
+        value: ""
       },
       email: {
-        elementType: 'input',
+        elementType: "input",
         elementConfig: {
-          type: 'text',
-          placeholder: 'Your E-mail'
+          type: "text",
+          placeholder: "Your E-mail"
         },
-        value: ''
+        value: ""
       },
       delivery: {
-        elementType: 'select',
+        elementType: "select",
         elementConfig: {
           options: [
-            {value: 'fastest', displayValue: 'Fastest'},
-            {value: 'cheapest', displayValue: 'Cheapest'},
+            { value: "fastest", displayValue: "Fastest" },
+            { value: "cheapest", displayValue: "Cheapest" }
           ]
-          
         },
-        value: ''
+        value: ""
       }
     },
     loading: false
@@ -99,22 +98,37 @@ class ContactData extends Component {
         });
       });
   };
+  inputChangeHandler = (event, inputIdentifier) => {
+    const updatedForm = {
+      ...this.state.orderForm
+    };
+    const updatedOrderElement = {
+      ...updatedForm[inputIdentifier]
+    };
+    updatedOrderElement.value = event.target.value;
+    updatedForm[inputIdentifier] = updatedOrderElement;
+    this.setState({
+      orderForm: updatedForm
+    });
+  };
   render() {
     const formElementsArray = [];
     for (let key in this.state.orderForm) {
       formElementsArray.push({
         id: key,
         config: this.state.orderForm[key]
-      })
+      });
     }
     let form = (
       <form>
         {formElementsArray.map(formElement => (
-          <Input 
-          key = {formElement.id}
-          elementType={formElement.config.elementType}
-          elementConfig = {formElement.config.elementConfig}
-          value = {formElement.config.value}/>
+          <Input
+            key={formElement.id}
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+            changed={event => this.inputChangeHandler(event, formElement.id)}
+          />
         ))}
         <Button btnType="Success" clicked={this.orderHandler}>
           ORDER
