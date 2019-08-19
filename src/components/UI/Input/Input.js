@@ -3,7 +3,7 @@ import classes from "./Input.css";
 
 function Input(props) {
   let inputElement = null;
-  switch (props.inputtype) {
+  switch (props.elementType) {
     case "input":
       inputElement = (
         <input
@@ -25,17 +25,18 @@ function Input(props) {
       );
       break;
     case "select":
-      inputElement = (
-        <select
+    inputElement = (
+      <select
           className={classes.InputElement}
           value={props.value}
-          onChange = {props.changed}>
+          onChange={props.changed}>
           {props.elementConfig.options.map(option => (
-            <option key ={option.value} value={option.value}>{option.displayValue}</option>
+              <option key={option.value} value={option.value}>
+                  {option.displayValue}
+              </option>
           ))}
-          
-        </select>
-      );
+      </select>
+  );
       break;
     default:
       inputElement = (
